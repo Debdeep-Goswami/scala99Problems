@@ -1,5 +1,6 @@
 package Ninty99Problems
 
+import scala.annotation.tailrec
 import scala.collection.immutable.Stream.Empty
 
 object P03 extends App {
@@ -35,6 +36,7 @@ object P03 extends App {
 
 
   //  Solution 2 with Recursion
+  @tailrec
   def findKthElement_v2[T](k:Int,list: List[T],counter:Int): Option[T] = {
     if(list.isEmpty) None
     else if(counter>k) None
