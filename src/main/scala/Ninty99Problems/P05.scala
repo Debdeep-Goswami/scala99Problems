@@ -5,7 +5,7 @@ import scala.annotation.tailrec
 object P05 extends App {
 
   //  Problem Statement
-  //  P04 (*) Find the number of elements of a list.
+  //  P05 (*) Reverse a list.
 
   //  Solution 1 with Built in function
 
