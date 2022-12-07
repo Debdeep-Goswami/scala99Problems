@@ -8,10 +8,12 @@ object P05 extends App {
   //  Solution 1 with Built in function
 
   val list = List(1, 2, 3, 4, 5)
+  val emptyList = List()
+
+
   println(list)
   println(list.reverse)
-
-
+  println(emptyList.reverse)
   //  Solution 2 with Recursion
   def reverse[T](list: List[T]): List[T] = {
     def inner(list: List[T], reversedList: List[T]): List[T] = {
@@ -24,4 +26,5 @@ object P05 extends App {
 
   println(list)
   println(reverse(list))
+  println(reverse(emptyList))
 }
