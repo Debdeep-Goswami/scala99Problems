@@ -24,7 +24,6 @@ object P05 extends App {
       if (list.isEmpty) reversedList
       else inner(list.tail, list.head :: reversedList)
     }
-
     inner(list, List())
   }
 
