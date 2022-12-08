@@ -9,7 +9,7 @@ object P04 extends App {
 
   //  Solution 1 with Built in function
   val list = List(1, 2, 34, 6, 3, 6, 9)
-  val emptyList = List()
+  val emptyList = List.empty[Int]
 
   println(list.size)
   println(emptyList.size)
@@ -55,11 +55,12 @@ object P04 extends App {
   println(list.tail.fold(list.head) { (acc, curr) => acc + 1 })
 
   println(emptyList.fold(0){(acc,curr)=> acc+1})
-//  println(emptyList.tail.fold(emptyList.head) { (acc, curr) => acc + 1 })
+  println(emptyList.tail.fold(emptyList.head) { (acc, curr) => acc + 1 })
 
 
   //  Solution 5 using reduce function
   println(list.reduce((acc,curr)=>acc+1))
-//  println(emptyList.reduce((acc,curr)=> acc+1))
+
+  println(emptyList.reduce((acc,curr)=> acc+1))
 }
 
