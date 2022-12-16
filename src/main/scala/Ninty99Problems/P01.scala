@@ -34,4 +34,9 @@ object P01 extends App {
   val myList = List(1, 1, 2, 3, 5, 8)
   display(lastBuiltIn(myList))
   display(lastBuiltIn(emptyList))
+
+  //  Solution 3 Using HOF (fold function)
+  println(myList.fold(0)((acc,ele)=>
+    ele
+  ))
 }
