@@ -7,11 +7,11 @@ object P08 extends App {
   //  Problem Statement
   //  P08 (**) Eliminate consecutive duplicates of list elements
 
-
-  //  Solution
   val list: List[Int] = List(1, 2, 2, 3, 4, 4, 5, 5, 6, 6, 6, 7)
   val list2: List[Char] = List('a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e')
+  val emptyList = List.empty[Int]
 
+  //  Solution found
     def dropDuplicate[T](list: List[T]): List[T] = {
       @tailrec
       def inner[T](list: List[T], ans: List[T]): List[T] = {
@@ -26,8 +26,10 @@ object P08 extends App {
 
     println(dropDuplicate(list))
     println(dropDuplicate(list2))
+    println(dropDuplicate(emptyList))
 
-  def removeDuplicate[T](list: List[T]): List[T] = {
+  //  Solution my way
+  def dropDuplicate_v2[T](list: List[T]): List[T] = {
     def inner[T](list: List[T], prev: Option[T], ans: List[T]): List[T] = {
       if (list.isEmpty) ans.reverse
       else if (prev == None) inner(list, Some(list.head), list.head :: ans)
@@ -41,7 +43,7 @@ object P08 extends App {
     inner(list, None, List.empty[T])
   }
 
-  println(removeDuplicate(list))
-  println(removeDuplicate(list2))
-  println(removeDuplicate(List.empty[Int]))
+  println(dropDuplicate_v2(list))
+  println(dropDuplicate_v2(list2))
+  println(dropDuplicate_v2(emptyList))
 }
