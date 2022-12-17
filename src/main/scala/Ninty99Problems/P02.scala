@@ -11,7 +11,7 @@ object P02 extends App {
   val emptyList = List();
   val myList = List(1, 2, 3, 4, 5, 6)
 
-  println(myList.reverse.tail.head)
+    println(myList.reverse.tail.head)
 
   //  Solution 2 with pattern matching
   @tailrec
@@ -24,8 +24,8 @@ object P02 extends App {
     }
   }
 
-  display(findSecondLast(emptyList))
-  display(findSecondLast(myList))
+    display(findSecondLast(emptyList))
+    display(findSecondLast(myList))
 
   //  Utility function to display
   def display[A](ans: Option[A]) = {
@@ -36,5 +36,35 @@ object P02 extends App {
   }
 
   //  Solution 3 Using HOF (fold function)
-//  println(myList.fold(0)((acc, ele) => ))
+  //  Fold Right
+    println(myList.foldRight((0,1))((ele,acc) =>
+      if(acc._2==0) (ele,acc._2-1)
+      else (acc._1,acc._2-1)
+    )._1)
+
+
+  //  Fold Left
+    println(myList.foldLeft(None:Option[Int], 2,myList.size)((acc, ele) => {
+      acc._3 - acc._2 match {
+        case 0 => (Some(ele), acc._2 + 1,acc._3)
+        case _ => (acc._1, acc._2 + 1,acc._3)
+      }
+    })._1)
+
+    //  With Empty List
+    println(emptyList.foldLeft(None: Option[Int], 2, myList.size)((acc, ele) => {
+      acc._3 - acc._2 match {
+        case 0 => (Some(ele), acc._2 + 1, acc._3)
+        case _ => (acc._1, acc._2 + 1, acc._3)
+      }
+    })._1)
+
+    //  With One Element list
+    println(List(1).foldLeft(None: Option[Int], 2, myList.size)((acc, ele) => {
+      acc._3 - acc._2 match {
+        case 0 => (Some(ele), acc._2 + 1, acc._3)
+        case _ => (acc._1, acc._2 + 1, acc._3)
+      }
+    })._1)
 }
+

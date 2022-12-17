@@ -46,4 +46,11 @@ object P08 extends App {
   println(dropDuplicate_v2(list))
   println(dropDuplicate_v2(list2))
   println(dropDuplicate_v2(emptyList))
+
+  println(List(4,9,7).foldLeft(0){(acc,ele) => ele})
+  println(List.empty[Int].foldLeft[Option[Int]](None){(acc,ele) => Some(ele)})
+
+  println(List.empty[Int].foldLeft(None:Option[Int]){(acc,ele) => Some(ele)})
+
+
 }
