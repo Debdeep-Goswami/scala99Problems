@@ -65,8 +65,17 @@ object LongestSequence extends App {
 
 
   //  Using Higher Order Function
-
+  //  My way
   val temp = list.groupBy(x => x).maxBy(x => x._2.size)
   val ans3 = LongestSequenceInfo(Some(temp._1), Some(temp._2.size))
   println("\nElement = " + ans3.element + "\nFrequency = " + ans3.frequence)
+
+  //  Updated way
+  val (elem, coll) = list.groupBy(identity).maxBy(_._2.length)
+  val ans4 = LongestSequenceInfo(Some(elem), Some(coll.length))
+  println("\nElement = " + ans4.element + "\nFrequency = " + ans4.frequence)
+
+  //  In One Line
+  println(list.groupBy(identity).maxBy(_._2.length))
+
 }
