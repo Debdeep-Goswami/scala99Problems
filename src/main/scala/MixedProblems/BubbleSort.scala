@@ -1,5 +1,7 @@
 package MixedProblems
 
+import scala.annotation.tailrec
+
 object BubbleSort {
 
   def swap(array: Array[Int], i: Int, j: Int): Array[Int] = {
@@ -8,6 +10,7 @@ object BubbleSort {
   }
 
   def bubbleSort(array: Array[Int]): Array[Int] = {
+    @tailrec
     def inner(array: Array[Int], arrayLength: Int): Array[Int] = {
       if (arrayLength <= 1) array
       else {
