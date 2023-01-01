@@ -14,7 +14,7 @@ object SelectionSort extends App {
     inner(list, None)
   }
 
-  def selectionSort(list: List[Int]): List[Int] = {
+  def selectionSortList(list: List[Int]): List[Int] = {
     def inner(list: List[Int], sortedList: List[Int]): List[Int] = {
       if (list.isEmpty) sortedList.reverse
       else {
@@ -59,32 +59,53 @@ object SelectionSort extends App {
   }
 
   val array: Array[Int] = Array(9, 8, 7, 6, 0, 5, 4, 3, 2, 1)
-  //  println("Before Sorting = " + array.mkString(" "))
-  //  println("After Sorting = " + selectionSortArray(array).mkString(" "))
+  println("Before Sorting = " + array.mkString(" "))
+  println("After Sorting = " + selectionSortArray(array).mkString(" "))
 
-  //  With Swapping
 
-  def findMinWithIndex(array: Array[Int]): (Int, Int) = {
-    def inner(array: Array[Int], min: Option[Int], index: Option[Int]): (Int, Int) = {
-      if (array.isEmpty) (min.get, index.get)
-      else if (min.isEmpty) inner(array.tail, Some(array.head), Some(0))
-      else if (min.get > array.head) inner(array.tail, Some(array.head), Some(index.get + 1))
-      else inner(array.tail, min, index)
+  //  With Swapping (Followed Actual Algo. With Recursion)
+
+  def selectionSortTailRecursive(unsortedArray: Array[Int]): Array[Int] = {
+    def inner(unsortedArray: Array[Int], sortedArray: Array[Int]): Array[Int] = {
+      if (unsortedArray.isEmpty) sortedArray
+      else {
+        val minIndex = findMinElementIndex(unsortedArray)
+        val minElement = unsortedArray(minIndex)
+        val tempArray = unsortedArray.updated(minIndex, unsortedArray(0)).updated(0, minElement)
+        inner(tempArray.tail, sortedArray :+ minElement)
+      }
     }
 
-    inner(array, None, None)
+    inner(unsortedArray, Array.empty[Int])
   }
 
-  println(findMinWithIndex(array))
+  def findMinElementIndex(array: Array[Int]): Int = {
+    def inner(start: Int, minIndex: Int): Int = {
+      if (start == array.size) minIndex
+      else inner(start + 1, if (array(minIndex) > array(start)) start else minIndex)
+    }
 
-//    def selectionSort_v2(array: Array[Int]): Array[Int] = {
-//      def inner(array: Array[Int], sortedArray: Array[Int]): Array[Int] = {
-//        if(array.isEmpty) sortedArray
-//        else{
-//          val (min, index) = findMinWithIndex(array)
-//          if (min > array.head) inner(array.updated(index,array.head).tail, sortedArray :+ min)
-//          else inner(array.updated(index,array.head).tail, sortedArray :+ min)
-//        }
-//      }
-//    }
+    inner(0, 0)
+  }
+  println("Before Sorting = " + array.mkString(" "))
+  println("After Sorting = " + selectionSortTailRecursive(array).mkString(" "))
+
+
+
+
+
+  //  Not Required kept for future understanding
+
+  //  def findMinWithIndex(array: Array[Int]): (Int, Int) = {
+  //    def inner(array: Array[Int], min: Option[Int], index: Option[Int]): (Int, Int) = {
+  //      if (array.isEmpty) (min.get, index.get)
+  //      else if (min.isEmpty) inner(array.tail, Some(array.head), Some(0))
+  //      else if (min.get > array.head) inner(array.tail, Some(array.head), Some(index.get + 1))
+  //      else inner(array.tail, min, index)
+  //    }
+  //
+  //    inner(array, None, None)
+  //  }
+  //
+  //  println(findMinWithIndex(array))
 }
