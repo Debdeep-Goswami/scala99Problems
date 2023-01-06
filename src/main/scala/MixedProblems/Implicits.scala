@@ -13,10 +13,10 @@ object Implicits extends App {
     override def add(x: String, y: String): String = x + " " + y
   }
 
-  def add[T](x: T, y: T)(implicit implicitObject: Add[T]): T = {
+  def adddition[T](x: T, y: T)(implicit implicitObject: Add[T]): T = {
     implicitObject.add(x,y)
   }
 
-  println(add(5,10))
-  println(add("Debdeep","Goswami"))
+  println(adddition(5,10))
+  println(adddition("Debdeep","Goswami"))
 }
