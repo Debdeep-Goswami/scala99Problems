@@ -11,14 +11,20 @@ object LinkedListRecursion {
   //  Head node
   var head: Node = null
 
-  @tailrec
   def displayList(head: Node): Unit = {
-    if (head == null) {
-      print("Null\n")
-    } else {
-      print(head.data + " -> ")
-      displayList(head.next)
+    @tailrec
+    def inner(temp: Node): Unit = {
+      if (temp == null) {
+        print("Null\n")
+      } else if (temp.next == head) {
+        print(temp.data + " -> " + head.data)
+      }
+      else {
+        print(temp.data + " -> ")
+        inner(temp.next)
+      }
     }
+    inner(head)
   }
 
   def addNode(head: Node, data: Int): Node = {
@@ -60,7 +66,7 @@ object LinkedListRecursion {
         head
       }
       else if (head.data == key) inner(head.next, head.next, head.next) //  If element found in head position
-      else if (temp != null && temp.data == key) {  //  Element found in other position
+      else if (temp != null && temp.data == key) { //  Element found in other position
         prev.next = temp.next
         inner(head, prev, temp.next)
       }
@@ -104,7 +110,7 @@ object LinkedListRecursion {
     inner(head, head, head)
   }
 
-  def makeCircullar(head: Node): Node = {
+  def makeCircular(head: Node): Node = {
     @tailrec
     def inner(head: Node, temp: Node): Node = {
       if (head == null) {
@@ -121,6 +127,37 @@ object LinkedListRecursion {
     inner(head, head)
   }
 
+  def findNthElement(head: Node, n: Int): Node = {
+    def inner(temp: Node, n: Int, counter: Int): Node = {
+      if (temp == null) null
+      else if (n - 1 == counter) return temp
+      else inner(temp.next, n, counter + 1)
+    }
+
+    inner(head, n, 0)
+  }
+
+  def findNthElementFromLast(head: Node, n: Int): Node = {
+    def inner(temp: Node, n: Int, target: Node): Node = {
+      if (temp == null) target
+      else if (n == 0 && temp == null) target
+      else if (n == 0 && temp.next != null) inner(temp.next, n - 1, target.next)
+      else inner(temp.next, n - 1, temp.next)
+    }
+
+    inner(head, n, null)
+  }
+
+  def length(head: Node): Int = {
+    def inner(temp: Node, count: Int): Int = {
+      if (temp == null) count
+      else if (temp.next == null || temp.next == head) count + 1
+      else inner(temp.next, count + 1)
+    }
+
+    inner(head, 0)
+  }
+
   def showOptions(): Int = {
     println("\n__________________________________\n")
     println("Select one of the option")
@@ -131,7 +168,10 @@ object LinkedListRecursion {
     println("4 = Delete All Occurrences")
     println("5 = Find Mid")
     println("6 = Detect Loop")
-    println("7 = Make the list Circullar")
+    println("7 = Make the list Circular")
+    println("8 = Find nth element from the beginning")
+    println("9 = Find nth element from the last")
+    println("10 = Length of the list ")
     print("Enter choice = ")
     scala.io.StdIn.readInt()
   }
@@ -148,7 +188,10 @@ object LinkedListRecursion {
         case 4 => head = deleteAllOccurrences(head, scala.io.StdIn.readInt())
         case 5 => println(findMidElement(head))
         case 6 => println(detectLoop(head))
-        case 7 => makeCircullar(head)
+        case 7 => makeCircular(head)
+        case 8 => println(findNthElement(head, scala.io.StdIn.readInt()))
+        case 9 => println(findNthElementFromLast(head, scala.io.StdIn.readInt()))
+        case 10 => println(length(head))
         case _ => println("Invalid Option. \nPlease Try again\n ")
       }
     }
