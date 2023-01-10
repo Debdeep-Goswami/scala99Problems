@@ -60,6 +60,7 @@ object Knapsack0_1 {
             //  If not possible add
             table(w)(c) = table(w - 1)(c)
           } else {
+            //  If Possible to Add , store the max
             table(w)(c) = table(w - 1)(c).max(values(w - 1) + table(w - 1)(c - weights(w - 1)))
           }
         }
