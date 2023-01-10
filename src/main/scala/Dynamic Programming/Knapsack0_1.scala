@@ -2,9 +2,7 @@ package dp
 
 object Knapsack0_1 {
 
-  //  DP table to store the value
-  var table: Array[Array[Int]] = null
-
+  //  Recursive Solution
   def knapsack0_1(weights: Array[Int], values: Array[Int], capacity: Int): Int = {
 
     //  Base case
@@ -18,6 +16,12 @@ object Knapsack0_1 {
     //  If Possible to add
     else knapsack0_1(weights.tail, values.tail, capacity).max(values.head + knapsack0_1(weights.tail, values.tail, capacity - weights.head))
   }
+
+
+  //***********************  Memoization Solution  ***************************************
+
+  //  DP table to store the value
+  var table: Array[Array[Int]] = null
 
   def knapsack0_1_Memoization(weights: Array[Int], values: Array[Int], capacity: Int): Int = {
 
@@ -42,6 +46,8 @@ object Knapsack0_1 {
     }
   }
 
+  //**************************  Top Down Approach *************************************
+
   def knapsack0_1_TopDown(weights: Array[Int], values: Array[Int], capacity: Int): Int = {
     //  Initialization
     table = (0 to weights.size).map(x => (0 to capacity).map(y => if (x == 0 || y == 0) 0 else -1).toArray).toArray
@@ -61,6 +67,9 @@ object Knapsack0_1 {
     )
     table(weights.size)(capacity)
   }
+
+
+  //****************  Driver Code *******************************
 
   def main(args: Array[String]): Unit = {
     val weights: Array[Int] = Array(1, 2, 3)
