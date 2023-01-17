@@ -1,4 +1,4 @@
-package MixedProblems
+package Sorting
 
 object SelectionSort extends App {
 

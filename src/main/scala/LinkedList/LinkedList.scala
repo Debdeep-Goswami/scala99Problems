@@ -1,4 +1,4 @@
-package MixedProblems
+package LinkedList
 
 object LinkedList {
   //  Structure of the Singly Linked List

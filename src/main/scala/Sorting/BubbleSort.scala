@@ -1,4 +1,4 @@
-package MixedProblems
+package Sorting
 
 import scala.annotation.tailrec
 

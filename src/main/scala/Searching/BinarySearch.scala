@@ -1,4 +1,4 @@
-package MixedProblems
+package Searching
 
 import scala.annotation.tailrec
 

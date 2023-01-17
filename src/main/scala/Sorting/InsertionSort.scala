@@ -1,4 +1,4 @@
-package MixedProblems
+package Sorting
 
 object InsertionSort {
 

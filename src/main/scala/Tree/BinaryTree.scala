@@ -1,4 +1,4 @@
-package MixedProblems
+package Tree
 
 import scala.collection.mutable.ArrayBuffer
 

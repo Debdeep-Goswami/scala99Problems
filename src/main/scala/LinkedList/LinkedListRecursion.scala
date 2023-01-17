@@ -1,4 +1,4 @@
-package MixedProblems
+package LinkedList
 
 import scala.annotation.tailrec
 
