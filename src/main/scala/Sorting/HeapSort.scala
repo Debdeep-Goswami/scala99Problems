@@ -10,16 +10,29 @@ object HeapSort {
     buildHeap(array)
 
     //  Delete root one by one and heapify the rest of array
-    while (heapSize > 0) {
-      swap(array, 0, heapSize)
-      heapSize -= 1
-      heapify(array, 0, heapSize)
-    }
+
+    //  Using Loop
+    //    while (heapSize > 0) {
+    //      swap(array, 0, heapSize)
+    //      heapSize -= 1
+    //      heapify(array, 0, heapSize)
+    //    }
+
+    //  Using HF
+    (heapSize to 1 by -1).map(x => {
+      swap(array, 0, x)
+      heapify(array, 0, x)
+    })
   }
 
   def buildHeap(array: Array[Int]): Unit = {
     val heapSize = array.length
-    for (i <- heapSize / 2 to 0 by -1) heapify(array, i, heapSize)
+
+    //  Using loop
+    //    for (i <- heapSize / 2 to 0 by -1) heapify(array, i, heapSize)
+
+    //  Using HF
+    (heapSize / 2 to 0 by -1).map(i => heapify(array, i, heapSize))
   }
 
   def swap(array: Array[Int], left: Int, right: Int): Unit = {
@@ -47,7 +60,7 @@ object HeapSort {
   }
 
   def main(args: Array[String]): Unit = {
-//    val array = Array(10, 15, 20, 8, 16, 30, 50)
+    //    val array = Array(10, 15, 20, 8, 16, 30, 50)
     val array = Array(10, 15, -20, -8, 16, 30, -50)
     println("Before Sorting " + array.mkString(" "))
     heapSort(array)

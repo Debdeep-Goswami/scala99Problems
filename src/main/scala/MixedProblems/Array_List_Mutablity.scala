@@ -25,6 +25,4 @@ object Array_List_Mutablity {
     testList(list)
     println(list)
   }
-
-
 }
