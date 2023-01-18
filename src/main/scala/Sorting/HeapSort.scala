@@ -3,6 +3,7 @@ package Sorting
 import scala.annotation.tailrec
 
 object HeapSort {
+
   /*  Algorithm
 
   Step 1 Create a Heap from the given array (Skip the leaf nodes as they are already in heap)
