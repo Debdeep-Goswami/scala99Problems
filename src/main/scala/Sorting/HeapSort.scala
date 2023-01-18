@@ -3,24 +3,34 @@ package Sorting
 import scala.annotation.tailrec
 
 object HeapSort {
+  /*  Algorithm
+
+  Step 1 Create a Heap from the given array (Skip the leaf nodes as they are already in heap)
+  Step 2 Delete root node (Swap the root node with last element of the current array)
+  Step 3 Heapify the current array
+  Step 4 Repeat Step 2 and Step 3 for every element in the array
+
+   */
   def heapSort(array: Array[Int]): Unit = {
 
     var heapSize = array.length - 1
-    //  Build Heap for all internal nodes
+
+    //  Step 1 Build Heap for all internal nodes
     buildHeap(array)
 
-    //  Delete root one by one and heapify the rest of array
-
-    //  Using Loop
+    //  Step 4 - Using Loop
     //    while (heapSize > 0) {
     //      swap(array, 0, heapSize)
     //      heapSize -= 1
     //      heapify(array, 0, heapSize)
     //    }
 
-    //  Using HF
+    //  Step 4 - Using HF
     (heapSize to 1 by -1).map(x => {
+      //  Step 2 Delete Root node
       swap(array, 0, x)
+
+      //  Step 3 Heapify the current array
       heapify(array, 0, x)
     })
   }
