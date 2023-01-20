@@ -26,14 +26,25 @@ object Practice {
 
   def main(args: Array[String]): Unit = {
     val array: Array[Int] = Array(2, 1, 1, 1, 3, 3, 6, 6, 7, 1)
-    println("Before " + array.mkString(" "))
-    println("After " + removeDuplicate(array).mkString(" "))
+    //    println("Before " + array.mkString(" "))
+    //    println("After " + removeDuplicate(array).mkString(" "))
 
-    println(array.foldLeft(Array.empty[Int])((acc, cur) => cur +: acc).mkString(" "))
+    //    println(array.foldLeft(Array.empty[Int])((acc, cur) => cur +: acc).mkString(" "))
 
     val string: String = "hi this is hi hi is this one"
-    wordCount(string)
+    //    wordCount(string)
 
+    //  Print All combinations
+    val numbers: List[Int] = List(1, 2, 3)
+    val chars: List[Char] = List('a', 'b', 'c')
+
+    println(numbers.flatMap(n => chars.map(c => "" + n + c)))
+
+    val forCombinations = for {
+      n <- numbers
+      c <- chars
+    } yield "" + n + c
+
+    println(forCombinations)
   }
-
 }

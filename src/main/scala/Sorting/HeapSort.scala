@@ -26,7 +26,7 @@ object HeapSort {
     //      heapify(array, 0, heapSize)
     //    }
 
-    //  Step 4 - Using HF
+    //  Step 4 - Using HOF
     (heapSize to 1 by -1).map(x => {
       //  Step 2 Delete Root node
       swap(array, 0, x)
@@ -42,7 +42,7 @@ object HeapSort {
     //  Using loop
     //    for (i <- heapSize / 2 to 0 by -1) heapify(array, i, heapSize)
 
-    //  Using HF
+    //  Using HOF
     (heapSize / 2 to 0 by -1).map(i => heapify(array, i, heapSize))
   }
 
@@ -77,4 +77,10 @@ object HeapSort {
     heapSort(array)
     println("After Sorting " + array.mkString(" "))
   }
+
+  /*
+  Reference
+    https://www.youtube.com/watch?v=HqPJF2L5h9U&t=1988s
+    https://www.youtube.com/watch?v=kU4KBD4NFtw&list=PLEJXowNB4kPyP2PdMhOUlTY6GrRIITx28&index=7
+   */
 }
