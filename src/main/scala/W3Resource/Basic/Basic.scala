@@ -1,6 +1,6 @@
-package BasicExercise
+package W3Resource.Basic
 
-object VeryBasic extends App {
+object Basic extends App {
 
   //  1. Write a Scala program to print "Hello, world" and version of the Scala language.
   def fun1(): Unit = {
@@ -38,6 +38,7 @@ object VeryBasic extends App {
   //  println(fun4(100,20))
   //  println(fun4(20,10))
 
+  //  5. Write a Scala program to check a given integer and return true if it is within 20 of 100 or 300.
   def fun5(no1: Int): Boolean = Math.abs(100 - no1) <= 20 || Math.abs(300 - no1) <= 20
 
   //  println(fun5(115));
@@ -80,8 +81,77 @@ object VeryBasic extends App {
     }
   }
 
-//  println(fun8("Debdeep"))
+  //  println(fun8("Debdeep"))
 
-  //
+  //  9. Write a Scala program to create a new string which is 4 copies of the 2 front characters
+  //  of a given string. If the given string length is less than 2 return the original string.
+
+  def fun9(string: String): String = {
+    if (string.length < 2) string
+    else string.substring(0, 2) * 4
+  }
+
+  //  println(fun9("Debdeep"))
+  //  println(fun9("D"))
+
+  //  10. Write a Scala program to create a new string with the last char added at the front
+  //  and back of a given string of length 1 or more.
+
+  def fun10(string: String): String = {
+    val length = string.length
+    val last = if (length > 0) string.charAt(length - 1) else ""
+    last + string + last
+  }
+
+  //  println(fun10("DebdeeP"))
+  //  println(fun10(""))
+
+  //  11. Write a Scala program to check whether a given positive number is a multiple of 3
+  //  or a multiple of 7.
+
+  def fun11(number: Int): Boolean = number % 3 == 0 || number % 7 == 0
+
+  //  println(fun11(10))
+  //  println(fun11(49))
+  //  println(fun11(9))
+
+  //  12. Write a Scala program to create a new string taking the first 3 characters of a
+  //  given string and return the string with the 3 characters added at both the front and
+  //  back. If the given string length is less than 3, use whatever characters are there.
+
+  def fun12(string: String): String = {
+    if (string.length < 3) string * 3
+    else {
+      val first3 = string.substring(0, 3)
+      first3 + string + first3
+    }
+  }
+
+  //  println(fun12("deb"))
+  //  println(fun12("debdeep"))
+  //  println(fun12("de"))
+
+  //  13. Write a Scala program to check whether a given string starts with 'Sc' or not.
+  def fun13(string: String): Boolean = string.startsWith("Sc")
+
+  //  println(fun13("School"))
+  //  println(fun13("Debdeep"))
+
+  //  14. Write a Scala program to check whether one of the given temperatures is less
+  //  than 0 and the other is greater than 100.
+  def fun14(temp1: Int, temp2: Int): Boolean = (temp1 < 0 && temp2 > 100) || (temp1 > 100 && temp2 < 0)
+
+//  println(fun14(120, -1))
+//  println(fun14(-1, 120))
+//  println(fun14(2, 120))
+
+  //  15. Write a Scala program to check two given integers whether either of them is in
+  //  the range 100..200 inclusive.
+
+  def fun15(no1: Int, no2: Int): Boolean = (no1>=100 && no2<=200) || (no2>=100 && no2<=200)
+
+//  println(fun15(100, 199));
+//  println(fun15(250, 300));
+//  println(fun15(105, 190));
 
 }
